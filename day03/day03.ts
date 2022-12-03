@@ -12,6 +12,16 @@ function findDuplicate(c1: string, c2: string) {
 
     return "Not Found";
 }
+function findDuplicateInGroup(group: string[]) {
+
+    for (var i = 0; i < group[0].length; i++) {
+        let letter :string = group[0][i];
+        if (group[1].includes(letter) && group[2].includes(letter)) {
+            return letter;
+        } 
+    }
+    return "Not Found";
+}
 
 function getPriority(s1: string) {
     if (s1 == s1.toUpperCase()) {
@@ -35,4 +45,23 @@ inputFile.split(/\r?\n/).forEach(line =>  {
     sum += priority;
 });
 
-console.log("Sum: " + sum);
+console.log("Sum Part 1: " + sum);
+
+let elfNumber: number = 0;
+let groupOfElves:string[] = new Array(3);
+let groupSum: number = 0;
+
+inputFile.split(/\r?\n/).forEach(line =>  { 
+    groupOfElves[elfNumber] = line; 
+    elfNumber +=1;
+
+    if(elfNumber == 3) {
+        let duplicateLetter: string = findDuplicateInGroup(groupOfElves);
+        let priority: number = getPriority(duplicateLetter);
+        // console.log(duplicateLetter + " -> " + priority)
+        groupSum += priority;
+        elfNumber = 0;
+    } 
+});
+
+console.log("Sum Part 2: " + groupSum);
