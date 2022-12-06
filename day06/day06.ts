@@ -9,12 +9,12 @@ function charactersUnique(message: string) {
 
 
 var inputLength: number = input.length;
+var uniqueCount: number = 14;
 
-
-for(let i = 0; i < inputLength-4; i++) {
-    var message: string = input.substring(i,i+4);
+for(let i = 0; i < inputLength-uniqueCount; i++) {
+    var message: string = input.substring(i,i+uniqueCount);
     if(charactersUnique(message)) {
-        console.log(i+4);
+        console.log(i+uniqueCount);
         break;
     }
 }
