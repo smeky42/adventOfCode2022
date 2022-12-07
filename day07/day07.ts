@@ -72,9 +72,33 @@ folderSize.forEach( (size, folder) => {
 var sum: number = 0;
 folderSumSize.forEach((size, folder) => {
     if(size <= 100000) {
-        console.log(folder + " " + size);
+        // console.log(folder + " " + size);
         sum += size; 
     }
 });  
 
-console.log(sum);
+console.log("Summe:" + sum);
+
+var totalSpace: number = 70000000;
+var neededSpace: number = 30000000;
+var smallestPossibleFolder = "";
+
+sum = 0;
+folderSize.forEach((size, folder) => {
+    sum += size; 
+}); 
+
+console.log("Space used: " +  sum);
+var space: number = - totalSpace + sum + neededSpace; 
+console.log("Space to be freed: " +  space);
+
+
+folderSumSize.forEach((size, folder) => {
+    if(size >= space) {
+        //if(spaceFreed <= size) {
+            console.log(folder + " " + size);
+        //}
+    }
+});  
+
+
